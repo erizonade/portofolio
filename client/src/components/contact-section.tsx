@@ -98,13 +98,13 @@ export function ContactSection() {
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="animate-slide-up">
-            <h3 className="text-2xl font-semibold mb-8">Contact Information</h3>
+          <div className="animate-slide-in-left">
+            <h3 className="text-2xl font-semibold mb-8 animate-slide-up">Contact Information</h3>
 
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                <div key={index} className={`flex items-center space-x-4 animate-slide-in-left stagger-animation-${index + 1} hover:bg-muted/50 p-4 rounded-lg transition-all duration-300 transform hover:scale-105 cursor-pointer`}>
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center animate-bounce-in hover:bg-primary/20 transition-colors duration-300">
                     {info.icon}
                   </div>
                   <div>
@@ -127,17 +127,19 @@ export function ContactSection() {
             </div>
 
             {/* Call to Action */}
-            <Card className="mt-12">
-              <CardContent className="p-6">
-                <h4 className="font-semibold mb-2">Ready to work together?</h4>
+            <Card className="mt-12 hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-scale-in stagger-animation-5 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <CardContent className="p-6 relative">
+                <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors duration-200">Ready to work together?</h4>
                 <p className="text-muted-foreground mb-4">
                   I'm always excited to take on new challenges and collaborate on
                   innovative projects.
                 </p>
                 <a href="mailto:erizonade2001@gmail.com">
-                  <Button className="transform hover:scale-105 transition-transform duration-200">
+                  <Button className="transform hover:scale-110 transition-all duration-300 hover:shadow-lg relative overflow-hidden group/btn">
                     <Send className="h-4 w-4 mr-2" />
-                    Send Email
+                    <span className="relative z-10">Send Email</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer opacity-0 group-hover/btn:opacity-100"></div>
                   </Button>
                 </a>
               </CardContent>
@@ -145,8 +147,8 @@ export function ContactSection() {
           </div>
 
           {/* Contact Form */}
-          <div className="animate-slide-up">
-            <h3 className="text-2xl font-semibold mb-8">Send Message</h3>
+          <div className="animate-slide-in-right">
+            <h3 className="text-2xl font-semibold mb-8 animate-slide-up">Send Message</h3>
 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -154,10 +156,14 @@ export function ContactSection() {
                   control={form.control}
                   name="name"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="animate-slide-up stagger-animation-1">
                       <FormLabel>Full Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your full name" {...field} />
+                        <Input 
+                          placeholder="Your full name" 
+                          className="transition-all duration-300 focus:scale-105 hover:shadow-md"
+                          {...field} 
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -168,12 +174,13 @@ export function ContactSection() {
                   control={form.control}
                   name="email"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="animate-slide-up stagger-animation-2">
                       <FormLabel>Email Address</FormLabel>
                       <FormControl>
                         <Input
                           type="email"
                           placeholder="your.email@example.com"
+                          className="transition-all duration-300 focus:scale-105 hover:shadow-md"
                           {...field}
                         />
                       </FormControl>
@@ -186,10 +193,14 @@ export function ContactSection() {
                   control={form.control}
                   name="subject"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="animate-slide-up stagger-animation-3">
                       <FormLabel>Subject</FormLabel>
                       <FormControl>
-                        <Input placeholder="Project discussion" {...field} />
+                        <Input 
+                          placeholder="Project discussion" 
+                          className="transition-all duration-300 focus:scale-105 hover:shadow-md"
+                          {...field} 
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -200,12 +211,12 @@ export function ContactSection() {
                   control={form.control}
                   name="message"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="animate-slide-up stagger-animation-4">
                       <FormLabel>Message</FormLabel>
                       <FormControl>
                         <Textarea
                           placeholder="Tell me about your project..."
-                          className="resize-none"
+                          className="resize-none transition-all duration-300 focus:scale-105 hover:shadow-md"
                           rows={6}
                           {...field}
                         />
@@ -217,11 +228,12 @@ export function ContactSection() {
 
                 <Button
                   type="submit"
-                  className="w-full transform hover:scale-105 transition-transform duration-200"
+                  className="w-full transform hover:scale-110 transition-all duration-300 hover:shadow-lg relative overflow-hidden group animate-slide-up stagger-animation-5"
                   disabled={isSubmitting}
                 >
                   <Send className="h-4 w-4 mr-2" />
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  <span className="relative z-10">{isSubmitting ? "Sending..." : "Send Message"}</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer opacity-0 group-hover:opacity-100"></div>
                 </Button>
               </form>
             </Form>
