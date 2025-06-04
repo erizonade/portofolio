@@ -37,16 +37,16 @@ export function AboutSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="animate-slide-up">
-            <h3 className="text-2xl font-semibold mb-6">My Journey</h3>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
+          <div className="animate-slide-in-left">
+            <h3 className="text-2xl font-semibold mb-6 animate-slide-up">My Journey</h3>
+            <p className="text-muted-foreground mb-6 leading-relaxed animate-slide-up stagger-animation-1">
               I have been passionate about Web & Mobile Development for over 6
               years in the professional world. Currently, I focus on the Laravel
               framework for backend development and Flutter for mobile
               applications, but I'm always open to learning new technologies and
               expanding my skill set as a programmer.
             </p>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
+            <p className="text-muted-foreground mb-6 leading-relaxed animate-slide-up stagger-animation-2">
               My experience spans across various companies including PT. Qtasnim
               Digital Teknologi, PT. Halo Auto Indonesia, and several other
               organizations where I've contributed to joint developments and
@@ -54,9 +54,9 @@ export function AboutSection() {
             </p>
 
             {/* Education */}
-            <Card className="bg-muted">
+            <Card className="bg-muted hover:shadow-lg transition-all duration-300 transform hover:scale-105 animate-scale-in stagger-animation-3">
               <CardContent className="p-6">
-                <h4 className="font-semibold mb-2">Education</h4>
+                <h4 className="font-semibold mb-2 text-primary">Education</h4>
                 <p className="text-muted-foreground">
                   <strong>Bachelor's Degree in Information Systems</strong>
                   <br />
@@ -68,12 +68,15 @@ export function AboutSection() {
             </Card>
           </div>
 
-          <div className="animate-slide-up">
-            <h3 className="text-2xl font-semibold mb-6">Experience Highlights</h3>
+          <div className="animate-slide-in-right">
+            <h3 className="text-2xl font-semibold mb-6 animate-slide-up">Experience Highlights</h3>
             <div className="space-y-6">
               {experiences.map((exp, index) => (
-                <div key={index} className={`border-l-4 ${exp.color} pl-6`}>
-                  <h4 className="font-semibold text-lg">{exp.title}</h4>
+                <div 
+                  key={index} 
+                  className={`border-l-4 ${exp.color} pl-6 transform hover:scale-105 transition-all duration-300 animate-slide-in-left stagger-animation-${index + 1} hover:bg-muted/30 p-4 rounded-r-lg cursor-pointer`}
+                >
+                  <h4 className="font-semibold text-lg hover:text-primary transition-colors duration-200">{exp.title}</h4>
                   <p className="text-primary font-medium">{exp.company}</p>
                   <p className="text-muted-foreground text-sm">{exp.period}</p>
                   <p className="text-muted-foreground mt-2">{exp.description}</p>
