@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Ganti dengan nama repo GitHub kamu
-const repoName = "PersonalPortfolio";
+const repoName = "portofolio";
 
 export default defineConfig({
   base: `/${repoName}/`,
